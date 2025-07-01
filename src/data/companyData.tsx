@@ -16,12 +16,12 @@ export const getCompanyData = (lang: Language): CompanyInfo => {
     services: [
       {
         icon: <Home />,
-        label: lang === 'fr' ? 'Soins à domicile' : 'טיפול בבית',
+        label: lang === 'fr' ? 'Traduction' : 'תרגום',
         description: lang === 'fr' ? 'Soins personnalisés dans le confort de votre domicile' : 'טיפול מותאם בנוחות הבית שלכם'
       },
       {
         icon: <MedicalServices />,
-        label: lang === 'fr' ? 'Soins infirmiers' : 'שירותי סיעוד',
+        label: lang === 'fr' ? 'Soins infirmiers à domicile' : ' בבית שירותי סיעוד',
         description: lang === 'fr' ? 'Équipe d\'infirmières diplômées et expérimentées' : 'צוות אחיות מוסמכות ומנוסות'
       },
       {
@@ -41,7 +41,7 @@ export const getCompanyData = (lang: Language): CompanyInfo => {
       },
       {
         icon: <Security />,
-        label: lang === 'fr' ? 'Suivi médical' : 'מעקב רפואי',
+        label: lang === 'fr' ? 'Accompagnement aux rendez-vous médicaux' : 'מעקב רפואי',
         description: lang === 'fr' ? 'Accompagnement et surveillance médicale continue' : 'ליווי ומעקב רפואי מתמיד'
       },
       {
