@@ -37,7 +37,7 @@ export default function RootLayout({
       <body className={`${geist.variable} ${geistMono.variable} antialiased`}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          {children}
+        {children}
         </ThemeProvider>
       </body>
     </html>

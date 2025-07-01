@@ -27,9 +27,11 @@ import {
   Share,
   WhatsApp,
   Language as LanguageIcon,
+  Public,
 } from '@mui/icons-material';
 import { getCompanyData } from '@/data/companyData';
 import { translations, Language } from '@/data/translations';
+import Image from 'next/image';
 
 export const BusinessCard: React.FC = () => {
   const [expanded, setExpanded] = useState(false);
@@ -82,7 +84,8 @@ export const BusinessCard: React.FC = () => {
           width: { xs: '95vw', sm: 420 },
           minHeight: { xs: 'auto', sm: 'auto' },
           borderRadius: 4,
-          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+          // Couleurs inspirées du logo : bleu marine vers bleu plus clair
+          background: 'linear-gradient(135deg, #2E4F99 0%, #4A6BC5 50%, #87CEEB 100%)',
           color: 'white',
           overflow: 'visible',
           position: 'relative',
@@ -94,10 +97,11 @@ export const BusinessCard: React.FC = () => {
             left: -2,
             right: -2,
             bottom: -2,
-            background: 'linear-gradient(45deg, #667eea, #764ba2, #667eea)',
+            // Bordure avec couleurs du logo
+            background: 'linear-gradient(45deg, #2E4F99, #CD853F, #87CEEB, #2E4F99)',
             borderRadius: 4,
             zIndex: -1,
-            opacity: 0.7,
+            opacity: 0.8,
           }
         }}
       >
@@ -109,18 +113,36 @@ export const BusinessCard: React.FC = () => {
         }}>
           <Box display="flex" justifyContent="space-between" alignItems="flex-start" mb={2}>
             <Box display="flex" alignItems="center">
-                             <Avatar
-                 sx={{
-                   width: { xs: 80, sm: 64 },
-                   height: { xs: 80, sm: 64 },
-                   bgcolor: 'rgba(255, 255, 255, 0.2)',
-                   backdropFilter: 'blur(10px)',
-                   mr: { xs: 2.5, sm: 2 },
-                 }}
-               >
-                 <MedicalServices sx={{ fontSize: { xs: 40, sm: 32 }, color: 'white' }} />
-               </Avatar>
-                             <Box>
+              {/* Logo de l'entreprise */}
+              <Box
+                sx={{
+                  width: { xs: 100, sm: 80 },
+                  height: { xs: 100, sm: 80 },
+                  borderRadius: '50%',
+                  bgcolor: 'rgba(255, 255, 255, 0.1)',
+                  backdropFilter: 'blur(10px)',
+                  mr: { xs: 2.5, sm: 2 },
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  border: '2px solid rgba(205, 133, 63, 0.3)', // Couleur orange du logo
+                  overflow: 'hidden',
+                }}
+              >
+                <Image
+                  src="/logo-opetitsoins.png"
+                  alt="Logo Opetitsoins"
+                  width={100}
+                  height={100}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    borderRadius: '30%',
+                  }}
+                />
+              </Box>
+              <Box>
                 <Typography 
                   variant="h4" 
                   fontWeight="bold" 
@@ -165,13 +187,13 @@ export const BusinessCard: React.FC = () => {
                         px: { xs: 1, sm: 1.5 },
                       },
                       '& .MuiOutlinedInput-notchedOutline': {
-                        borderColor: 'rgba(255, 255, 255, 0.3)',
+                        borderColor: 'rgba(205, 133, 63, 0.5)', // Couleur orange du logo
                       },
                       '&:hover .MuiOutlinedInput-notchedOutline': {
-                        borderColor: 'rgba(255, 255, 255, 0.5)',
+                        borderColor: 'rgba(205, 133, 63, 0.8)',
                       },
                       '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                        borderColor: 'white',
+                        borderColor: '#CD853F', // Orange du logo
                       },
                       '& .MuiSelect-icon': {
                         color: 'white',
@@ -190,7 +212,7 @@ export const BusinessCard: React.FC = () => {
             </Box>
           </Box>
 
-          <Divider sx={{ bgcolor: 'rgba(255, 255, 255, 0.3)', mb: 2 }} />
+          <Divider sx={{ bgcolor: 'rgba(205, 133, 63, 0.4)', mb: 2 }} />
 
           {/* Services Section */}
           <Box mb={3}>
@@ -205,9 +227,15 @@ export const BusinessCard: React.FC = () => {
                   label={service.label}
                   size="small"
                   sx={{
-                    bgcolor: 'rgba(255, 255, 255, 0.2)',
+                    // Couleurs alternées inspirées du logo
+                    bgcolor: index % 2 === 0 
+                      ? 'rgba(135, 206, 235, 0.3)' // Bleu clair du logo
+                      : 'rgba(205, 133, 63, 0.3)', // Orange du logo
                     color: 'white',
                     backdropFilter: 'blur(10px)',
+                    border: `1px solid ${index % 2 === 0 
+                      ? 'rgba(135, 206, 235, 0.5)' 
+                      : 'rgba(205, 133, 63, 0.5)'}`,
                     '& .MuiChip-icon': { color: 'white' },
                   }}
                 />
@@ -219,7 +247,10 @@ export const BusinessCard: React.FC = () => {
           <Box display="flex" alignItems="center" mb={2}>
             <Box display="flex" mr={1}>
               {[...Array(company.rating.maxScore)].map((_, i) => (
-                <Star key={i} sx={{ color: i < company.rating.score ? '#ffd700' : 'rgba(255, 255, 255, 0.3)', fontSize: 20 }} />
+                <Star key={i} sx={{ 
+                  color: i < company.rating.score ? '#CD853F' : 'rgba(255, 255, 255, 0.3)', // Orange du logo pour les étoiles
+                  fontSize: 20 
+                }} />
               ))}
             </Box>
             <Typography variant="body2" sx={{ opacity: 0.9 }}>
@@ -227,7 +258,7 @@ export const BusinessCard: React.FC = () => {
             </Typography>
           </Box>
 
-          <Divider sx={{ bgcolor: 'rgba(255, 255, 255, 0.3)', mb: 2 }} />
+          <Divider sx={{ bgcolor: 'rgba(205, 133, 63, 0.4)', mb: 2 }} />
 
           {/* Contact Information */}
           <Box>
@@ -275,10 +306,30 @@ export const BusinessCard: React.FC = () => {
               </Typography>
             </Box>
 
-            <Box display="flex" alignItems="center" mb={2}>
+            <Box display="flex" alignItems="center" mb={1.5}>
               <LocationOn sx={{ mr: 2, fontSize: 20 }} />
               <Typography variant="body2">
                 {company.contact.address}
+              </Typography>
+            </Box>
+
+            <Box 
+              display="flex" 
+              alignItems="center" 
+              mb={2}
+              onClick={() => window.open('https://optitsoins-site.vercel.app', '_blank')}
+              sx={{ 
+                cursor: 'pointer',
+                '&:hover': {
+                  opacity: 0.8,
+                  transform: 'translateX(2px)'
+                },
+                transition: 'all 0.2s ease'
+              }}
+            >
+              <Public sx={{ mr: 2, fontSize: 20 }} />
+              <Typography variant="body2">
+                optitsoins-site.vercel.app
               </Typography>
             </Box>
           </Box>
@@ -315,15 +366,15 @@ export const BusinessCard: React.FC = () => {
               startIcon={<Email />}
               onClick={handleEmail}
               sx={{
-                borderColor: 'rgba(255, 255, 255, 0.5)',
+                borderColor: 'rgba(205, 133, 63, 0.6)', // Orange du logo
                 color: 'white',
                 py: { xs: 1.5, sm: 1 },
                 px: { xs: 3, sm: 2 },
                 fontSize: { xs: '1.1rem', sm: '0.875rem' },
                 width: { xs: '100%', sm: 'auto' },
                 '&:hover': {
-                  borderColor: 'white',
-                  bgcolor: 'rgba(255, 255, 255, 0.1)',
+                  borderColor: '#CD853F', // Orange du logo
+                  bgcolor: 'rgba(205, 133, 63, 0.2)',
                 }
               }}
             >
@@ -334,7 +385,7 @@ export const BusinessCard: React.FC = () => {
           {/* Expandable Description */}
           <Fade in={expanded} timeout={500}>
             <Box mt={2} display={expanded ? 'block' : 'none'}>
-              <Divider sx={{ bgcolor: 'rgba(255, 255, 255, 0.3)', mb: 2 }} />
+              <Divider sx={{ bgcolor: 'rgba(205, 133, 63, 0.4)', mb: 2 }} />
               <Typography variant="body2" sx={{ opacity: 0.9, lineHeight: 1.6 }}>
                 {company.description}
               </Typography>
@@ -345,7 +396,12 @@ export const BusinessCard: React.FC = () => {
             <Button
               size="small"
               onClick={() => setExpanded(!expanded)}
-              sx={{ color: 'rgba(255, 255, 255, 0.8)' }}
+              sx={{ 
+                color: 'rgba(255, 255, 255, 0.8)',
+                '&:hover': {
+                  color: '#CD853F' // Orange du logo au survol
+                }
+              }}
             >
               {expanded ? t.readLess : t.readMore}
             </Button>
