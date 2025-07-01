@@ -3,6 +3,9 @@ import {
   MedicalServices,
   Security,
   AccessTime,
+  LocalHospital,
+  Psychology,
+  Healing,
 } from '@mui/icons-material';
 import { CompanyInfo } from '@/types/company';
 import { Language } from './translations';
@@ -20,6 +23,21 @@ export const getCompanyData = (lang: Language): CompanyInfo => {
         icon: <MedicalServices />,
         label: lang === 'fr' ? 'Soins infirmiers' : 'שירותי סיעוד',
         description: lang === 'fr' ? 'Équipe d\'infirmières diplômées et expérimentées' : 'צוות אחיות מוסמכות ומנוסות'
+      },
+      {
+        icon: <LocalHospital />,
+        label: lang === 'fr' ? 'Hospitalisation psychiatrique' : 'אשפוז פסיכיאטרי',
+        description: lang === 'fr' ? 'Suivi psychiatrique à domicile spécialisé' : 'מעקב פסיכיאטרי מתמחה בבית'
+      },
+      {
+        icon: <Psychology />,
+        label: lang === 'fr' ? 'Prise en charge démence' : 'טיפול בדמנציה',
+        description: lang === 'fr' ? 'Accompagnement pour troubles démentiels et Alzheimer' : 'ליווי בהפרעות דמנציה ואלצהיימר'
+      },
+      {
+        icon: <Healing />,
+        label: lang === 'fr' ? 'Injection | Pansement' : 'זריקות | חבישות',
+        description: lang === 'fr' ? 'Soins techniques : injections et pansements' : 'טיפולים טכניים: זריקות וחבישות'
       },
       {
         icon: <Security />,
@@ -50,7 +68,7 @@ export const getCompanyData = (lang: Language): CompanyInfo => {
       ...baseData,
       tagline: 'Soins infirmiers à domicile',
       description: `Opetitsoins est votre partenaire de confiance pour tous vos besoins de soins infirmiers à domicile. 
-        Notre équipe d'infirmières qualifiées vous accompagne avec professionnalisme et bienveillance, 
+        Notre équipe d'infirmiers qualifiées vous accompagne avec professionnalisme et bienveillance, 
         dans le confort de votre foyer. Disponibles 24h/24, nous garantissons des soins de qualité 
         adaptés à vos besoins spécifiques.`,
     };
@@ -59,7 +77,7 @@ export const getCompanyData = (lang: Language): CompanyInfo => {
       ...baseData,
       tagline: 'שירותי סיעוד בבית',
       description: `Opetitsoins הוא השותף המהימן שלכם לכל הצרכים שלכם בתחום הסיעוד הביתי. 
-        צוות האחיות המוסמכות שלנו מלווה אתכם במקצועיות ובהקפדה, 
+        צוות האחיים המוסמכים שלנו מלווה אתכם במקצועיות ובהקפדה, 
         בנוחות הבית שלכם. זמינים 24/7, אנו מבטיחים טיפול איכותי 
         המותאם לצרכים הספציפיים שלכם.`,
     };

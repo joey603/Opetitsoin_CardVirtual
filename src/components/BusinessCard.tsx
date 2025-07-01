@@ -118,15 +118,10 @@ export const BusinessCard: React.FC = () => {
                 sx={{
                   width: { xs: 100, sm: 80 },
                   height: { xs: 100, sm: 80 },
-                  borderRadius: '50%',
-                  bgcolor: 'rgba(255, 255, 255, 0.1)',
-                  backdropFilter: 'blur(10px)',
                   mr: { xs: 2.5, sm: 2 },
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  border: '2px solid rgba(205, 133, 63, 0.3)', // Couleur orange du logo
-                  overflow: 'hidden',
                 }}
               >
                 <Image
@@ -137,8 +132,7 @@ export const BusinessCard: React.FC = () => {
                   style={{
                     width: '100%',
                     height: '100%',
-                    objectFit: 'cover',
-                    borderRadius: '30%',
+                    objectFit: 'contain',
                   }}
                 />
               </Box>
@@ -164,51 +158,70 @@ export const BusinessCard: React.FC = () => {
                 </Typography>
               </Box>
             </Box>
-            <Box>
+            <Box 
+              display="flex" 
+              flexDirection="column" 
+              alignItems="flex-end"
+              sx={{ 
+                maxWidth: { xs: '120px', sm: '140px' },
+                width: 'fit-content'
+              }}
+            >
               <Tooltip title={t.share}>
-                <IconButton onClick={handleShare} sx={{ color: 'white' }}>
+                <IconButton onClick={handleShare} sx={{ color: 'white', mb: 0.5 }}>
                   <Share />
                 </IconButton>
               </Tooltip>
               
               {/* Sélecteur de langue */}
-              <Box mt={1} display="flex" justifyContent="center">
-                <FormControl size="small">
-                  <Select
-                    value={language}
-                    onChange={handleLanguageChange}
-                    sx={{
+              <FormControl size="small" sx={{ width: '100%' }}>
+                <Select
+                  value={language}
+                  onChange={handleLanguageChange}
+                  sx={{
+                    color: 'white',
+                    fontSize: { xs: '0.65rem', sm: '0.75rem' },
+                    width: '100%',
+                    maxWidth: { xs: '70px', sm: '80px' },
+                    height: { xs: 28, sm: 32 },
+                    '& .MuiSelect-select': {
+                      py: { xs: 0.3, sm: 0.5 },
+                      px: { xs: 0.5, sm: 1 },
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    },
+                    '& .MuiOutlinedInput-notchedOutline': {
+                      borderColor: 'rgba(205, 133, 63, 0.5)', // Couleur orange du logo
+                    },
+                    '&:hover .MuiOutlinedInput-notchedOutline': {
+                      borderColor: 'rgba(205, 133, 63, 0.8)',
+                    },
+                    '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                      borderColor: '#CD853F', // Orange du logo
+                    },
+                    '& .MuiSelect-icon': {
                       color: 'white',
-                      fontSize: { xs: '0.7rem', sm: '0.75rem' },
-                      minWidth: { xs: 80, sm: 100 },
-                      height: { xs: 32, sm: 40 },
-                      '& .MuiSelect-select': {
-                        py: { xs: 0.5, sm: 1 },
-                        px: { xs: 1, sm: 1.5 },
-                      },
-                      '& .MuiOutlinedInput-notchedOutline': {
-                        borderColor: 'rgba(205, 133, 63, 0.5)', // Couleur orange du logo
-                      },
-                      '&:hover .MuiOutlinedInput-notchedOutline': {
-                        borderColor: 'rgba(205, 133, 63, 0.8)',
-                      },
-                      '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                        borderColor: '#CD853F', // Orange du logo
-                      },
-                      '& .MuiSelect-icon': {
-                        color: 'white',
-                      },
-                    }}
-                  >
-                    <MenuItem value="fr" sx={{ fontSize: { xs: '0.7rem', sm: '0.875rem' } }}>
-                      {t.languages.fr}
-                    </MenuItem>
-                    <MenuItem value="he" sx={{ fontSize: { xs: '0.7rem', sm: '0.875rem' } }}>
-                      {t.languages.he}
-                    </MenuItem>
-                  </Select>
-                </FormControl>
-              </Box>
+                      right: { xs: 2, sm: 4 },
+                    },
+                  }}
+                >
+                  <MenuItem value="fr" sx={{ 
+                    fontSize: { xs: '0.65rem', sm: '0.75rem' },
+                    minHeight: { xs: 32, sm: 36 },
+                    justifyContent: 'center'
+                  }}>
+                    🇫🇷 FR
+                  </MenuItem>
+                  <MenuItem value="he" sx={{ 
+                    fontSize: { xs: '0.65rem', sm: '0.75rem' },
+                    minHeight: { xs: 32, sm: 36 },
+                    justifyContent: 'center'
+                  }}>
+                    🇮🇱 HE
+                  </MenuItem>
+                </Select>
+              </FormControl>
             </Box>
           </Box>
 
