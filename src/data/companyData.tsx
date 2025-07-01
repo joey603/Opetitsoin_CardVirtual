@@ -52,7 +52,7 @@ export const getCompanyData = (lang: Language): CompanyInfo => {
     ],
     contact: {
       phone: '+972585524343',
-      email: 'Arielbarthel@gmail.com',
+      email: 'opetitsoinsashdod@gmail.com',
       address: lang === 'fr' ? 'Ashdod, Israël' : 'אשדוד, ישראל',
       website: 'www.opetitsoins.fr'
     },
